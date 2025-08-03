@@ -66,7 +66,7 @@ int main() {
 
         EntityManager::updateAll(time_manager.getDeltaTime());
 
-        TextRenderer::RenderText("Hello Game!");
+        TextRenderer::RenderText(Vector2D(1000, 600), "Hello Game!");
 
         glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
         glViewport(0, 0, screenWidth, screenHeight);

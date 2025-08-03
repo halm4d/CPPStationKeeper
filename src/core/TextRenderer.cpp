@@ -4,9 +4,11 @@
 
 #include "TextRenderer.h"
 
-void TextRenderer::RenderText(const char* text) {
+#include "Vector2D.h"
+
+void TextRenderer::RenderText(const Vector2D pos, const char* text) {
     ImDrawList *drawList = ImGui::GetBackgroundDrawList();
-    drawList->AddText(ImVec2(100, 100), IM_COL32(255, 255, 255, 255), text);
+    drawList->AddText(ImVec2(pos.x, pos.y), IM_COL32(255, 255, 255, 255), text);
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

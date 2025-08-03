@@ -13,19 +13,13 @@ find_package(imgui CONFIG REQUIRED)
 file(GLOB_RECURSE PROJECT_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/src/third_party/*.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/src/third_party/*.h"
 )
 file(GLOB_RECURSE PROJECT_HEADERS
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
 # Add the executable target
 add_executable(CPPRayStationKeeper ${PROJECT_SOURCES} ${PROJECT_HEADERS})
-target_include_directories(CPPRayStationKeeper PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
 
 # Link libraries
 target_link_libraries(CPPRayStationKeeper PRIVATE

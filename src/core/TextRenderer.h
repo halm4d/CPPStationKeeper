@@ -5,12 +5,14 @@
 #ifndef TEXTRENDERER_H
 #define TEXTRENDERER_H
 #include <imgui.h>
+
+#include "Vector2D.h"
 #include "../third_party/imgui/imgui_impl_opengl3.h"
 
 
 class TextRenderer {
 public:
-    static void RenderText(const char *text);
+    static void RenderText(Vector2D pos, const char *text);
 };
 
 
