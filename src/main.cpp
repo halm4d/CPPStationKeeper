@@ -46,11 +46,14 @@ int main() {
 
     EntityManager * entity_manager = EntityManager::getInstance();
 
-    Stats entity("Debug stats", &time_manager, &config, window, 1.0);
-    entity_manager->initialize(&entity);
+    Stats stats("Debug stats", &time_manager, &config, window);
+    entity_manager->initialize(&stats);
 
     Triangle triangle("Triangle");
     entity_manager->initialize(&triangle);
+
+    Triangle triangle2("Triangle");
+    entity_manager->initialize(&triangle2);
 
     constexpr auto clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 

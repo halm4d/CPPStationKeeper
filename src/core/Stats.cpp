@@ -85,6 +85,12 @@ void Stats::render() {
 }
 
 void Stats::destroy() {
+    if (config->isDebugMode()) {
+        // Cleanup ImGui
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
+    }
     Entity::destroy();
 }
 

@@ -28,7 +28,7 @@ private:
 
     bool show_debug_window = true; // Flag to control the visibility of the debug window
 public:
-    explicit Stats(const char *name, TimeManager *time_manager, Config *config, GLFWwindow *window, const double fps_refresh_rate): Entity(name) {
+    explicit Stats(const char *name, TimeManager *time_manager, Config *config, GLFWwindow *window, const double fps_refresh_rate = 1.0): Entity(name) {
         this->time_manager = time_manager;
         this->config = config;
         this->window = window;

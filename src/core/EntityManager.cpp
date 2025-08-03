@@ -27,18 +27,6 @@ void EntityManager::renderAll() {
 
 void EntityManager::initialize(Entity *entity) {
     if (entity) {
-        // Entities contain entity with the same name, then change the name
-        int counter = 0;
-        for (const auto &existingEntity: getInstance()->entities) {
-            if (existingEntity && existingEntity->name() == entity->name()) {
-                counter++;
-            }
-        }
-
-        static std::string new_name_str;
-        new_name_str = fmt::format("{} - {}", entity->name(), counter);
-        entity->set_name(new_name_str.c_str());
-
         entity->init();
         getInstance()->entities.push_back(std::vector<std::shared_ptr<Entity> >::value_type(entity));
     }
