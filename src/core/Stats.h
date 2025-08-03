@@ -7,7 +7,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Config.h"
-#include "IEntity.h"
+#include "Entity.h"
 
 #include <imgui.h>
 
@@ -15,7 +15,7 @@
 #include "../third_party/imgui/imgui_impl_glfw.h"
 #include "../third_party/imgui/imgui_impl_opengl3.h"
 
-class Stats : public IEntity {
+class Stats : public Entity {
 private:
     TimeManager *time_manager;
     Config *config;
@@ -28,12 +28,7 @@ private:
 
     bool show_debug_window = true; // Flag to control the visibility of the debug window
 public:
-    explicit Stats(TimeManager *time_manager, Config *config) {
-        this->time_manager = time_manager;
-        this->config = config;
-    };
-
-    explicit Stats(TimeManager *time_manager, Config *config, GLFWwindow *window, const double fps_refresh_rate) {
+    explicit Stats(const char *name, TimeManager *time_manager, Config *config, GLFWwindow *window, const double fps_refresh_rate): Entity(name) {
         this->time_manager = time_manager;
         this->config = config;
         this->window = window;

@@ -4,6 +4,8 @@
 
 #include "Stats.h"
 
+#include "EntityManager.h"
+
 double Stats::getFPS() {
     double current_time = time_manager->getCurrentTime();
 
@@ -31,7 +33,7 @@ void Stats::init() {
         ImGui_ImplOpenGL3_Init("#version 130");
     }
 
-    IEntity::init();
+    Entity::init();
 }
 
 void Stats::update(double delta_time) {
@@ -57,6 +59,21 @@ void Stats::update(double delta_time) {
         ImGui::Text("Debug Mode: %s", config->isDebugMode() ? "Enabled" : "Disabled");
 
         ImGui::End();
+
+        ImGui::Begin("Entities");
+        ImGui::SeparatorText("Entity List");
+        ImGui::Text("Total Entities: %zu", EntityManager::getInstance()->getEntities().size());
+        for (const auto& entity : EntityManager::getInstance()->getEntities()) {
+            if (entity && entity->isAlive()) {
+                ImGui::SeparatorText(entity->name);
+                ImGui::Text("UID: %s", entity->uid);
+                ImGui::Text("Initialized: %s", entity->initialized ? "Yes" : "No");
+                ImGui::Text("Destroyed: %s", entity->destroyed ? "Yes" : "No");
+            }
+        }
+
+
+        ImGui::End();
     }
 }
 
@@ -68,7 +85,7 @@ void Stats::render() {
 }
 
 void Stats::destroy() {
-    IEntity::destroy();
+    Entity::destroy();
 }
 
 

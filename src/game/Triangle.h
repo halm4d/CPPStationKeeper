@@ -6,10 +6,10 @@
 #define TRIANGLE_H
 #include <GLFW/glfw3.h>
 
-#include "../core/IEntity.h"
+#include "../core/Entity.h"
 
 
-class Triangle : public IEntity {
+class Triangle final : public Entity {
 private:
     // Vertex data
     float m_vertices[9] = {
@@ -26,7 +26,7 @@ private:
     };
 
 public:
-    Triangle() = default;
+    explicit Triangle(const char *name) : Entity(name) {}
 
     void update(double deltaTime) override;
     void render() override;

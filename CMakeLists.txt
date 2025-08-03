@@ -8,6 +8,8 @@ find_package(fmt CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(imgui CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
+find_package(Boost REQUIRED COMPONENTS uuid)
 
 # Recursively find all .cpp and .h files
 file(GLOB_RECURSE PROJECT_SOURCES
@@ -27,4 +29,6 @@ target_link_libraries(CPPRayStationKeeper PRIVATE
         glfw
         OpenGL::GL
         imgui::imgui
+        glm::glm
+        Boost::uuid
 )

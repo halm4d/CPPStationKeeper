@@ -43,10 +43,10 @@ int main() {
 
     auto time_manager = TimeManager();
 
-    Stats entity(&time_manager, &config, window, 1.0);
+    Stats entity("Debug stats", &time_manager, &config, window, 1.0);
     EntityManager::initialize(&entity);
 
-    Triangle triangle{};
+    Triangle triangle("Triangle");
     EntityManager::initialize(&triangle);
 
     constexpr auto clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -62,11 +62,9 @@ int main() {
         }
         time_manager.update();
 
-        EntityManager::destroyAll();
-
         EntityManager::updateAll(time_manager.getDeltaTime());
 
-        TextRenderer::RenderText(Vector2D(1000, 600), "Hello Game!");
+        TextRenderer::RenderText(glm::vec2(300, 300), "Hello Game!");
 
         glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
         glViewport(0, 0, screenWidth, screenHeight);
