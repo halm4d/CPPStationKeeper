@@ -8,11 +8,7 @@
 #include <vector>
 #include "Entity.h"
 
-struct EntityManager {
-private:
-    std::vector<std::shared_ptr<Entity> > entities;
-    static EntityManager *instance;
-public:
+struct EntityManager final {
     static EntityManager *getInstance() {
         if (!instance) {
             instance = new EntityManager();
@@ -20,10 +16,18 @@ public:
         return instance;
     }
 
-    static void updateAll(double delta_time);
-    static void renderAll();
+private:
+    std::vector<std::shared_ptr<Entity> > entities;
+    static EntityManager *instance;
 
-    static void initialize(Entity *entity);
+public:
+    virtual ~EntityManager() = default;
+
+    virtual void updateAll(double delta_time);
+
+    virtual void renderAll();
+
+    virtual void initialize(Entity *entity);
 
     [[nodiscard]] std::vector<std::shared_ptr<Entity> > getEntities() const {
         return entities;

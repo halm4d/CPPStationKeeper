@@ -16,9 +16,9 @@ const char * Entity::generateUID() {
     return uid_str.c_str();
 }
 
-Entity::Entity(const char * name) : name(name) {
+Entity::Entity(const char * name) : m_name(name) {
     static std::string generated_uid = generateUID();
-    uid = generated_uid.c_str();
+    m_uid = generated_uid.c_str();
 }
 
 void Entity::update(double delta_time) {

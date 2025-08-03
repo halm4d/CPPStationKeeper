@@ -65,10 +65,10 @@ void Stats::update(double delta_time) {
         ImGui::Text("Total Entities: %zu", EntityManager::getInstance()->getEntities().size());
         for (const auto& entity : EntityManager::getInstance()->getEntities()) {
             if (entity && entity->isAlive()) {
-                ImGui::SeparatorText(entity->name);
-                ImGui::Text("UID: %s", entity->uid);
-                ImGui::Text("Initialized: %s", entity->initialized ? "Yes" : "No");
-                ImGui::Text("Destroyed: %s", entity->destroyed ? "Yes" : "No");
+                ImGui::SeparatorText(entity->name());
+                ImGui::Text("UID: %s", entity->uid());
+                ImGui::Text("Initialized: %s", entity->initialized() ? "Yes" : "No");
+                ImGui::Text("Destroyed: %s", entity->destroyed() ? "Yes" : "No");
             }
         }
 

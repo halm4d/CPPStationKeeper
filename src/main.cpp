@@ -43,11 +43,14 @@ int main() {
 
     auto time_manager = TimeManager();
 
+
+    EntityManager * entity_manager = EntityManager::getInstance();
+
     Stats entity("Debug stats", &time_manager, &config, window, 1.0);
-    EntityManager::initialize(&entity);
+    entity_manager->initialize(&entity);
 
     Triangle triangle("Triangle");
-    EntityManager::initialize(&triangle);
+    entity_manager->initialize(&triangle);
 
     constexpr auto clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
@@ -62,7 +65,7 @@ int main() {
         }
         time_manager.update();
 
-        EntityManager::updateAll(time_manager.getDeltaTime());
+        entity_manager->updateAll(time_manager.getDeltaTime());
 
         TextRenderer::RenderText(glm::vec2(300, 300), "Hello Game!");
 
@@ -72,7 +75,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         /* Render here */
-        EntityManager::renderAll();
+        entity_manager->renderAll();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
